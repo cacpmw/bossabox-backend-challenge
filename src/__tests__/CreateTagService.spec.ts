@@ -18,7 +18,7 @@ describe('CreateTag', () => {
     });
 
     it('should not be able to create two tags with same name', async () => {
-        const firstTag = await createTagService.execute({
+        await createTagService.execute({
             name: 'New Tag'.toLowerCase().trim(),
         });
 
