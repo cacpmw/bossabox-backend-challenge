@@ -17,10 +17,7 @@ class Tag {
     tools: Tool[];
 
     @Column()
-    description: string;
-
-    @Column('timestamp with time zone')
-    date: Date;
+    name: string;
 
     @CreateDateColumn()
     created_at: Date;
