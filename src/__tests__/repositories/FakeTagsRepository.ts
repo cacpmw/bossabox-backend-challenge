@@ -1,12 +1,12 @@
-import Tag from '@modules/tools/infrastructure/typeorm/entities/Tag';
-import ITagRepository from '@modules/tools/interfaces/classes/ITagRepository';
-import ITagObject from '@modules/tools/interfaces/objects/ITagObject';
+import Tag from '@modules/tags/infrastructure/typeorm/entities/Tag';
+import ITagRepository from '@modules/tags/interfaces/classes/ITagRepository';
+import ITagObject from '@modules/tags/interfaces/objects/ITagObject';
 import { uuid } from 'uuidv4';
 
 export default class FakeTagsRepository implements ITagRepository {
     private tags: Tag[] = [];
 
-    public async create(tag: ITagObject): Promise<Tag> {
+    public async store(tag: ITagObject): Promise<Tag> {
         const newTag = new Tag();
         newTag.id = uuid();
         newTag.name = tag.name.toLowerCase().trim();

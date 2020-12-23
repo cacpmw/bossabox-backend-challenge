@@ -9,7 +9,7 @@ export default class CreateTagService {
     constructor(
         @inject('TagsRepository')
         private tagRepository: ITagRepository,
-    ) { }
+    ) {}
 
     public async execute(tag: ITagObject): Promise<Tag> {
         const existingTag = await this.tagRepository.findByName(
@@ -18,7 +18,7 @@ export default class CreateTagService {
         if (existingTag) {
             throw new RequestError('This name is already taken');
         }
-        const newTag = await this.tagRepository.create(tag);
+        const newTag = await this.tagRepository.store(tag);
         return newTag;
     }
 }

@@ -1,16 +1,16 @@
-import ITagRepository from '@modules/tools/interfaces/classes/ITagRepository';
-import ITagObject from '@modules/tools/interfaces/objects/ITagObject';
+import ITagRepository from '@modules/tags/interfaces/classes/ITagRepository';
+import ITagObject from '@modules/tags/interfaces/objects/ITagObject';
 import { getRepository, Repository } from 'typeorm';
 import Tag from '../entities/Tag';
 
-export default class FakeTagsRepository implements ITagRepository {
+export default class TagsRepository implements ITagRepository {
     private ormRepository: Repository<Tag>;
 
     constructor() {
         this.ormRepository = getRepository(Tag);
     }
 
-    public async create(tag: ITagObject): Promise<Tag> {
+    public async store(tag: ITagObject): Promise<Tag> {
         const newTag = this.ormRepository.create(tag);
         await this.ormRepository.save(newTag);
         return newTag;

@@ -1,3 +1,4 @@
+import Tool from '@modules/tools/infrastructure/typeorm/entities/Tool';
 import {
     Entity,
     Column,
@@ -6,7 +7,6 @@ import {
     UpdateDateColumn,
     ManyToMany,
 } from 'typeorm';
-import Tool from './Tool';
 
 @Entity('tags')
 class Tag {

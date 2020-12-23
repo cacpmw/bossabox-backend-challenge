@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import CreateTagService from '@modules/tools/services/CreateTagService';
+import CreateTagService from '@modules/tags/services/CreateTagService';
 import FakeTagsRepository from './repositories/FakeTagsRepository';
 
 let fakeTagsRepository: FakeTagsRepository;

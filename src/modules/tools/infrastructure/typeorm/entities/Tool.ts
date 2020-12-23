@@ -1,3 +1,4 @@
+import Tag from '@modules/tags/infrastructure/typeorm/entities/Tag';
 import {
     Entity,
     Column,
@@ -7,7 +8,6 @@ import {
     JoinTable,
     ManyToMany,
 } from 'typeorm';
-import Tag from './Tag';
 
 @Entity('tools')
 class Tool {
@@ -26,9 +26,6 @@ class Tool {
 
     @Column()
     description: string;
-
-    @Column('timestamp with time zone')
-    date: Date;
 
     @CreateDateColumn()
     created_at: Date;
