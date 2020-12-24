@@ -7,7 +7,7 @@ export default class ListAllToolsService {
     constructor(
         @inject('ToolsRepository')
         private toolRepository: IToolRepository,
-    ) { }
+    ) {}
 
     public async execute(): Promise<Tool[]> {
         return this.toolRepository.all();

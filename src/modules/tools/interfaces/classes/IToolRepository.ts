@@ -6,4 +6,5 @@ export default interface IToolRepository {
     findByTitle(title: string): Promise<Tool | undefined>;
     all(): Promise<Tool[]>;
     destroy(id: string): Promise<void>;
+    findById(id: string): Promise<Tool | undefined>;
 }

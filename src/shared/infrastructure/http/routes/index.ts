@@ -1,8 +1,9 @@
-import { Router, Request, Response } from 'express';
+import { Router } from 'express';
+import toolsRouter from '@modules/tools/infrastructure/http/routes/tools.routes';
+import tagsRouter from '@modules/tags/infrastructure/http/routes/tags.routes';
 
 const routes = Router();
-routes.use('/', async (request: Request, response: Response) => {
-    return response.status(200).json('working');
-});
+routes.use('/tools', toolsRouter);
+routes.use('/tags', tagsRouter);
 
 export default routes;

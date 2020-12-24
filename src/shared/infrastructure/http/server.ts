@@ -9,10 +9,12 @@ import routes from '@shared/infrastructure/http/routes';
 import '@shared/infrastructure/typeorm/connection';
 import ExceptionHandler from '@shared/exceptions/Handler';
 import '@shared/container/index';
-import rateLimiter from './middlewares/rateLimiter';
+// import rateLimiter from './middlewares/rateLimiter';
+import requestLogger from './middlewares/requestLogger';
 
 const app = express();
-app.use(rateLimiter);
+app.use(requestLogger);
+// app.use(rateLimiter);
 app.use(express.json());
 app.use(cors());
 app.use(routes);

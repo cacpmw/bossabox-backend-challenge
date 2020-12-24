@@ -15,7 +15,17 @@ class Tool {
     id: string;
 
     @ManyToMany(() => Tag, tag => tag.tools)
-    @JoinTable({ name: 'tool_id' })
+    @JoinTable({
+        name: 'tool_tags',
+        joinColumn: {
+            name: 'tool_id',
+            referencedColumnName: 'id',
+        },
+        inverseJoinColumn: {
+            name: 'tag_id',
+            referencedColumnName: 'id',
+        },
+    })
     tags: Tag[];
 
     @Column()

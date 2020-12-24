@@ -10,12 +10,14 @@ toolsRouter.post(
     '/',
     celebrate({
         [Segments.BODY]: {
-            provider_id: Joi.string().uuid().required(),
-            date: Joi.date().required(),
+            title: Joi.string().required(),
+            link: Joi.string().required(),
+            description: Joi.string().required(),
         },
     }),
     toolsController.store,
 );
-toolsRouter.post('/', toolsController.index);
+toolsRouter.get('/', toolsController.index);
+toolsRouter.get('/:id', toolsController.show);
 
 export default toolsRouter;

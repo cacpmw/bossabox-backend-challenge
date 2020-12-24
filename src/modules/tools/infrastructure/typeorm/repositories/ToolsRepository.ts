@@ -20,8 +20,12 @@ export default class ToolsRepository implements IToolRepository {
         return this.ormRepository.findOne({ where: { title } });
     }
 
+    public async findById(id: string): Promise<Tool | undefined> {
+        return this.ormRepository.findOne(id);
+    }
+
     public async all(): Promise<Tool[]> {
-        return this.ormRepository.find();
+        return this.ormRepository.find({ relations: ['tags'] });
     }
 
     public async destroy(id: string): Promise<void> {
