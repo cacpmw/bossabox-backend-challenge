@@ -1,4 +1,5 @@
 import CreateToolService from '@modules/tools/services/CreateToolService';
+import DestroyToolService from '@modules/tools/services/DestroyToolService';
 import ListAllToolsService from '@modules/tools/services/ListAllToolsService';
 import ShowToolService from '@modules/tools/services/ShowToolService';
 import StatusCode from '@shared/infrastructure/http/statusCodes';
@@ -34,5 +35,15 @@ export default class ToolsController {
             description,
         });
         return response.status(StatusCode.Created).json(tool);
+    }
+
+    public async destroy(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
+        const { id } = request.params;
+        const destroyToolService = container.resolve(DestroyToolService);
+        await destroyToolService.execute(id);
+        return response.status(StatusCode.Ok).json();
     }
 }
