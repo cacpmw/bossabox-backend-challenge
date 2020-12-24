@@ -23,4 +23,8 @@ export default class TagsRepository implements ITagRepository {
     public async findByName(name: string): Promise<Tag | undefined> {
         return this.ormRepository.findOne({ where: { name } });
     }
+
+    public async findById(id: string): Promise<Tag | undefined> {
+        return this.ormRepository.findOne(id);
+    }
 }

@@ -21,4 +21,8 @@ export default class FakeTagsRepository implements ITagRepository {
     public async findByName(name: string): Promise<Tag | undefined> {
         return this.tags.find(currentTag => currentTag.name === name);
     }
+
+    public async findById(id: string): Promise<Tag | undefined> {
+        return this.tags.find(currentTag => currentTag.id === id);
+    }
 }

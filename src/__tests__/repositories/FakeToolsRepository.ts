@@ -24,6 +24,10 @@ export default class FakeToolsRepository implements IToolRepository {
         return this.tools.find(currentTool => currentTool.title === title);
     }
 
+    public async findById(id: string): Promise<Tool | undefined> {
+        return this.tools.find(currentTool => currentTool.id === id);
+    }
+
     public async all(): Promise<Tool[]> {
         return this.tools;
     }

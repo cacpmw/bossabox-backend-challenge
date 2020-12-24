@@ -15,5 +15,6 @@ tagsRouter.post(
     tagsController.store,
 );
 tagsRouter.get('/', tagsController.index);
+tagsRouter.get('/:id', tagsController.show);
 
 export default tagsRouter;

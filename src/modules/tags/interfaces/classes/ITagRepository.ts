@@ -5,4 +5,5 @@ export default interface ITagRepository {
     store(tag: ITagObject): Promise<Tag>;
     all(): Promise<Tag[]>;
     findByName(name: string): Promise<Tag | undefined>;
+    findById(id: string): Promise<Tag | undefined>;
 }
