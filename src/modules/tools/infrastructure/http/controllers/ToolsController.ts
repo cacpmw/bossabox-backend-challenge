@@ -11,10 +11,10 @@ export default class ToolsController {
         request: Request,
         response: Response,
     ): Promise<Response> {
-        const { filter } = request.query;
+        const { tag } = request.query;
         const listAllToolsService = container.resolve(ListAllToolsService);
         const tools = await listAllToolsService.execute(
-            filter?.toString() || undefined,
+            tag?.toString() || undefined,
         );
         return response.status(StatusCode.Ok).json(tools);
     }

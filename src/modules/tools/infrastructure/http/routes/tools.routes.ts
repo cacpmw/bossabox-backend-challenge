@@ -24,7 +24,7 @@ toolsRouter.get(
     '/',
     celebrate({
         [Segments.QUERY]: {
-            filter: Joi.string(),
+            tag: Joi.string(),
         },
     }),
     toolsController.index,

@@ -46,6 +46,7 @@ export default class ToolsRepository implements IToolRepository {
                 where: (qb: SelectQueryBuilder<Tool>) => {
                     qb.where('LOWER(tags.name) = LOWER(:tag)', { tag: filter });
                 },
+                relations: ['tags'],
             });
         }
         return this.ormRepository.find({
