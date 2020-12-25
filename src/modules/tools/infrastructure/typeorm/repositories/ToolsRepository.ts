@@ -10,8 +10,18 @@ export default class ToolsRepository implements IToolRepository {
         this.ormRepository = getRepository(Tool);
     }
 
-    public async store(tool: IToolObject): Promise<Tool> {
-        const newTool = this.ormRepository.create(tool);
+    public async store({
+        description,
+        title,
+        link,
+        tags,
+    }: IToolObject): Promise<Tool> {
+        const newTool = this.ormRepository.create({
+            description,
+            link,
+            title,
+            tags,
+        });
         await this.ormRepository.save(newTool);
         return newTool;
     }

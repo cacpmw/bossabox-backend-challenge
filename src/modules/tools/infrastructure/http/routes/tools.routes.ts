@@ -5,7 +5,9 @@ import ToolsController from '../controllers/ToolsController';
 const toolsRouter = Router();
 const toolsController = new ToolsController();
 // toolsRouter.use(authenticated);
-
+const tag = Joi.object().keys({
+    name: Joi.string().required(),
+});
 toolsRouter.post(
     '/',
     celebrate({
@@ -13,6 +15,7 @@ toolsRouter.post(
             title: Joi.string().required(),
             link: Joi.string().required(),
             description: Joi.string().required(),
+            tags: Joi.array().items(tag),
         },
     }),
     toolsController.store,
