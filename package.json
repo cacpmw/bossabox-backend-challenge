@@ -10,7 +10,8 @@
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infrastructure/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest",
-    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand"
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "aglio:run": "aglio -i ./api.md --theme-template triple -s -p 4000"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -40,6 +41,7 @@
     "typescript": "^4.0.5"
   },
   "dependencies": {
+    "aglio": "^2.3.0",
     "aws-sdk": "^2.810.0",
     "bcryptjs": "^2.4.3",
     "celebrate": "^13.0.4",
@@ -64,5 +66,4 @@
     "typeorm": "^0.2.29",
     "uuidv4": "^6.2.4"
   }
-
 }
