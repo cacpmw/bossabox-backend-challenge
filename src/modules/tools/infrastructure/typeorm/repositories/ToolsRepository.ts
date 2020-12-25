@@ -1,6 +1,6 @@
 import IToolRepository from '@modules/tools/interfaces/classes/IToolRepository';
 import IToolObject from '@modules/tools/interfaces/objects/IToolObject';
-import { getRepository, Repository } from 'typeorm';
+import { getRepository, Repository, SelectQueryBuilder } from 'typeorm';
 import Tool from '../entities/Tool';
 
 export default class ToolsRepository implements IToolRepository {
@@ -34,8 +34,23 @@ export default class ToolsRepository implements IToolRepository {
         return this.ormRepository.findOne(id);
     }
 
-    public async all(): Promise<Tool[]> {
-        return this.ormRepository.find({ relations: ['tags'] });
+    public async all(filter?: string | undefined): Promise<Tool[]> {
+        if (filter) {
+            return this.ormRepository.find({
+                join: {
+                    alias: 'tool',
+                    leftJoinAndSelect: {
+                        tags: 'tool.tags',
+                    },
+                },
+                where: (qb: SelectQueryBuilder<Tool>) => {
+                    qb.where('LOWER(tags.name) = LOWER(:tag)', { tag: filter });
+                },
+            });
+        }
+        return this.ormRepository.find({
+            relations: ['tags'],
+        });
     }
 
     public async destroy(id: string): Promise<void> {

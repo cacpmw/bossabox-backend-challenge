@@ -20,7 +20,15 @@ toolsRouter.post(
     }),
     toolsController.store,
 );
-toolsRouter.get('/', toolsController.index);
+toolsRouter.get(
+    '/',
+    celebrate({
+        [Segments.QUERY]: {
+            filter: Joi.string(),
+        },
+    }),
+    toolsController.index,
+);
 toolsRouter.get('/:id', toolsController.show);
 toolsRouter.delete('/:id', toolsController.destroy);
 

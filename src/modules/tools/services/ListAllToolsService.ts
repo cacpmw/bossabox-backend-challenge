@@ -9,7 +9,7 @@ export default class ListAllToolsService {
         private toolRepository: IToolRepository,
     ) {}
 
-    public async execute(): Promise<Tool[]> {
-        return this.toolRepository.all();
+    public async execute(filter: string | undefined): Promise<Tool[]> {
+        return this.toolRepository.all(filter);
     }
 }
